@@ -1,5 +1,34 @@
 <template>
+  <style>
+    td {
+      width: 200px;
+      background-color: lightblue;
+      height: 1em;
+    }
+  </style>
   <h1>${message}</h1>
-  <div i18n-params.bind="{source: 'app.html i18n-params'}" i18n="message"></div>
-  <div t-params.bind="{source: 'app.html t-params'}" i18n="message"></div>
+  <button click.delegate="loadModelA()">Click 1: Load model a</button>
+  <button click.delegate="loadModelB()">Click 2: Load model b</button>
+  <table>
+    <tr>
+      <td>key</td>
+      <td>t.bind</td>
+      <td>{... & t}</td>
+    </tr>
+    <tr>
+      <td>${model.line1}</td>
+      <td t.bind="model.line1"></td>
+      <td>${model.line1 & t}</td>
+    </tr>
+    <tr>
+      <td>${model.line2}</td>
+      <td t.bind="model.line2"></td>
+      <td>${model.line2 & t}</td>
+    </tr>
+  </table>
+
+  <h1>Referenced keys</h1>
+  <div t="model-a.line1"></div>
+  <div t="model-a.line2"></div>
+  <div t="model-b.line1"></div>
 </template>
